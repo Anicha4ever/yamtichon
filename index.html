@@ -5,45 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>חידון ים תיכון</title>
     <style>
-
-        
-.floating-whatsapp {
-    position: fixed; 
-    bottom: 20px;
-    left: 20px;
-    background-color: #25D366;
-    color: white;
-    padding: 12px 20px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    z-index: 1000;
-    transition: transform 0.3s ease;
-    border: 2px solid white; 
-}
-
-.floating-whatsapp:hover {
-    transform: scale(1.1); 
-    background-color: #20BA5A;
-}
-
-.floating-whatsapp svg {
-    fill: white; 
-}
-
-
-@media (max-width: 768px) {
-    .floating-whatsapp {
-        padding: 10px 15px;
-        font-size: 0.9rem;
-        bottom: 15px;
-        left: 15px;
-    }
-}
         @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;700;900&display=swap');
 
         :root {
@@ -103,6 +64,7 @@
             align-items: center;
         }
 
+        /* Header Styling */
         header {
             text-align: center;
             margin-bottom: 30px;
@@ -112,6 +74,25 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
             backdrop-filter: blur(5px);
             border: 2px solid rgba(139, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .header-title-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .header-logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%; /* Circle shape */
+            object-fit: cover;
+            border: 3px solid var(--primary-color);
         }
 
         h1 {
@@ -373,20 +354,60 @@
             padding: 15px 30px;
         }
 
-        /* Confetti Canvas */
-        #confetti {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 100;
+        /* Result Whatsapp Button (Green) */
+        .whatsapp-btn {
+            background-color: #25D366; 
+            color: white !important;
+            border-color: #128C7E;
+            text-decoration: none; 
+            display: inline-block;
+            margin-top: 15px;
+            width: 100%; 
+            box-sizing: border-box;
         }
 
-        /* Mobile Adjustments */
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+            transform: translateY(-3px);
+        }
+
+        /* Floating Whatsapp Button CSS */
+        .floating-whatsapp {
+            position: fixed; 
+            bottom: 20px;
+            left: 20px;
+            background-color: #25D366;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 1000;
+            transition: transform 0.3s ease;
+            border: 2px solid white; 
+        }
+
+        .floating-whatsapp:hover {
+            transform: scale(1.1); 
+            background-color: #20BA5A;
+        }
+
+        .floating-whatsapp svg {
+            fill: white; 
+        }
+
         @media (max-width: 768px) {
-            .content-wrapper {
+            .floating-whatsapp {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+                bottom: 15px;
+                left: 15px;
+            }
+             .content-wrapper {
                 flex-direction: column;
                 align-items: center;
                 gap: 20px;
@@ -407,30 +428,23 @@
             }
         }
 
+        /* Confetti Canvas */
+        #confetti {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 100;
+        }
+
     </style>
-
-
-.whatsapp-btn {
-    background-color: #25D366; 
-    color: white !important;
-    border-color: #128C7E;
-    text-decoration: none; 
-    display: inline-block;
-    margin-top: 15px;
-    width: 100%; 
-    box-sizing: border-box;
-}
-
-.whatsapp-btn:hover {
-    background-color: #128C7E;
-    transform: translateY(-3px);
-}
 </head>
 <body>
 
 <canvas id="confetti"></canvas>
 
-<!-- Decorative Background Elements -->
 <svg class="decoration deco-top-right" viewBox="0 0 100 100" fill="none" stroke="#8b0000" stroke-width="2">
     <path d="M50 0 C50 50 100 50 100 50 C100 50 50 50 50 100 C50 100 50 50 0 50 C0 50 50 50 50 0 Z" />
     <circle cx="20" cy="20" r="5" fill="#ffcc00" stroke="none"/>
@@ -445,35 +459,26 @@
 
 <div class="game-container">
     <header>
-    <div class="header-title-wrapper">
-        <img src="YOUR-IMAGE-NAME.jpg" alt="yamti26.jpg" class="header-logo">
-        <h1>חידון ים תיכון</h1>
-    </div>
-    <div class="subtitle">טריוויה נפוליטנית מקורית</div>
-</header>
+        <div class="header-title-wrapper">
+            <img src="YOUR-IMAGE-NAME.jpg" alt="לוגו" class="header-logo">
+            <h1>חידון ים תיכון</h1>
+        </div>
+        <div class="subtitle">טריוויה נפוליטנית מקורית</div>
+    </header>
 
     <div class="content-wrapper">
         
-        <!-- Scene Side -->
         <div class="scene">
             <div class="oven-container">
-                <!-- Pixel Art Oven SVG -->
                 <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Legs -->
                     <rect x="6" y="24" width="4" height="6" fill="#444"/>
                     <rect x="22" y="24" width="4" height="6" fill="#444"/>
-                    <!-- Dome -->
                     <path d="M4 14 C4 8 8 4 16 4 C24 4 28 8 28 14 V24 H4 V14 Z" fill="#333"/>
-                    <!-- Chimney -->
                     <rect x="14" y="0" width="4" height="6" fill="#999"/>
                     <rect x="13" y="0" width="6" height="1" fill="#666"/>
-                    <!-- Opening -->
                     <path d="M8 16 C8 12 10 10 16 10 C22 10 24 12 24 16 V22 H8 V16 Z" fill="#111"/>
-                    <!-- Fire -->
                     <path d="M12 20 L13 17 L14 19 L15 16 L16 19 L17 16 L18 19 L19 17 L20 20" stroke="#FF5722" stroke-width="2" fill="none" class="fire-anim"/>
-                    <!-- Floor -->
                     <rect x="8" y="22" width="16" height="2" fill="#AAA"/>
-                    <!-- Bricks detail -->
                     <rect x="6" y="14" width="2" height="2" fill="#555"/>
                     <rect x="24" y="14" width="2" height="2" fill="#555"/>
                 </svg>
@@ -481,47 +486,33 @@
 
             <div class="chef-container" id="chef">
                 <div class="speech-bubble" id="bubble">מוליטו בנה!</div>
-                <!-- Pixel Art Chef SVG -->
                 <svg viewBox="0 0 32 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Hair -->
                     <rect x="10" y="2" width="12" height="6" fill="#222"/>
                     <rect x="8" y="4" width="2" height="6" fill="#222"/>
                     <rect x="22" y="4" width="2" height="6" fill="#222"/>
-                    <!-- Face -->
                     <rect x="10" y="8" width="12" height="10" fill="#F0C0A0"/>
-                    <!-- Beard -->
                     <rect x="10" y="14" width="12" height="4" fill="#222"/>
-                    <rect x="12" y="16" width="8" height="2" fill="#F0C0A0"/> <!-- Mouth area -->
-                    <!-- Eyes -->
-                    <rect x="12" y="10" width="2" height="2" fill="#000"/>
+                    <rect x="12" y="16" width="8" height="2" fill="#F0C0A0"/> <rect x="12" y="10" width="2" height="2" fill="#000"/>
                     <rect x="18" y="10" width="2" height="2" fill="#000"/>
-                    <!-- Body/Shirt -->
                     <rect x="8" y="18" width="16" height="14" fill="#FFF"/>
-                    <!-- Arms -->
                     <rect x="4" y="18" width="4" height="10" fill="#F0C0A0"/>
                     <rect x="24" y="18" width="4" height="10" fill="#F0C0A0"/>
-                    <!-- Gloves/Hands -->
                     <rect x="4" y="28" width="4" height="3" fill="#333"/>
                     <rect x="24" y="28" width="4" height="3" fill="#333"/>
-                    <!-- Apron -->
                     <path d="M12 18 H20 V24 H22 V36 H10 V24 H12 V18 Z" fill="#800020"/>
-                    <!-- Apron Pocket -->
                     <rect x="13" y="28" width="6" height="4" fill="#600010"/>
-                    <!-- Legs -->
                     <rect x="11" y="36" width="4" height="8" fill="#333"/>
                     <rect x="17" y="36" width="4" height="8" fill="#333"/>
                 </svg>
             </div>
         </div>
 
-        <!-- Game/Questions Side -->
         <div class="game-column">
             
             <div class="score-board">
                 <div class="score-label">מגש הפיצות</div>
                 <div id="pizzas-container" style="display:flex; gap:4px; flex-wrap:wrap; justify-content:center; width:100%;">
-                    <!-- Pizzas go here -->
-                </div>
+                    </div>
             </div>
 
             <div id="game-ui">
@@ -529,30 +520,33 @@
                     <div class="tape"></div>
                     <div class="question-text" id="question-text">טוען שאלה...</div>
                     <div class="answers-grid" id="answers-container">
-                        <!-- Buttons injected here -->
-                    </div>
+                        </div>
                 </div>
             </div>
 
            <div id="result-ui" class="result-screen">
-    <div class="question-card">
-        <h2>משחק נגמר!</h2>
-        <p>הכנת <span id="final-score" style="font-weight:bold; color:var(--primary-color);">0</span> פיצות מושלמות.</p>
-        <div id="rank-msg" style="margin: 15px 0; font-weight:bold; font-size:1.1rem;"></div>
-        
-        <button class="btn restart-btn" onclick="restartGame()">להתחיל מחדש 🍕</button>
+                <div class="question-card">
+                    <h2>משחק נגמר!</h2>
+                    <p>הכנת <span id="final-score" style="font-weight:bold; color:var(--primary-color);">0</span> פיצות מושלמות.</p>
+                    <div id="rank-msg" style="margin: 15px 0; font-weight:bold; font-size:1.1rem;"></div>
+                    
+                    <button class="btn restart-btn" onclick="restartGame()">להתחיל מחדש 🍕</button>
 
-        <a href="https://wa.me/972544900928?text=היי,%20סיימתי%20את%20החידון%20ובא%20לי%20פיצה!" target="_blank" class="btn whatsapp-btn">
-            רוצים שאני אכין לכם פיצות? צרו קשר 💬
-        </a>
-        </div>
-</div>
+                    <a href="https://wa.me/972544900928?text=היי,%20סיימתי%20את%20החידון%20ובא%20לי%20פיצה!" target="_blank" class="btn whatsapp-btn">
+                        רוצים שאני אכין לכם פיצות? צרו קשר 💬
+                    </a>
                 </div>
             </div>
-
         </div>
     </div>
 </div>
+
+<a href="https://wa.me/972544900928?text=היי,%20אשמח%20לפרטים%20על%20הפיצות!" class="floating-whatsapp" target="_blank">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+        <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.599 2.669-.699c.93.513 2.004.788 3.075.789h.005c3.181 0 5.767-2.586 5.766-5.766 0-1.545-.601-2.997-1.694-4.089-1.094-1.092-2.545-1.693-4.091-1.693zm8.35 13.633c-1.347 1.2-3.132 1.86-5.029 1.862h-.005c-1.789 0-3.336-.576-4.647-1.353L5.2 21.667l4.316-1.13c1.233.676 2.628 1.033 4.053 1.034 4.545 0 8.244-3.699 8.245-8.245 0-2.202-.857-4.272-2.413-5.828-1.557-1.556-3.628-2.413-5.83-2.413C9.023 5.085 5.325 8.785 5.324 13.331c0 1.636.425 3.203 1.226 4.57l-1.305 4.767a.999.999 0 0 0 1.229 1.23l4.777-1.253c1.425.855 3.061 1.308 4.78 1.308 5.096 0 9.244-4.148 9.245-9.245-.001-2.673-1.096-5.074-2.945-6.773z"/>
+    </svg>
+    <span>צרו קשר!</span>
+</a>
 
 <script>
     /* Game Data */
@@ -753,6 +747,10 @@
 
     function restartGame() {
         initGame();
+        // Clear confetti canvas
+        const canvas = document.getElementById('confetti');
+        const ctx = canvas.getContext('2d');
+        ctx.clearRect(0,0, canvas.width, canvas.height);
     }
 
     /* Confetti Effect */
@@ -798,12 +796,7 @@
 
     // Start
     initGame();
-<a href="https://wa.me/972544900928?text=היי,%20אשמח%20לפרטים%20על%20הפיצות!" class="floating-whatsapp" target="_blank">
-    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-        <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.599 2.669-.699c.93.513 2.004.788 3.075.789h.005c3.181 0 5.767-2.586 5.766-5.766 0-1.545-.601-2.997-1.694-4.089-1.094-1.092-2.545-1.693-4.091-1.693zm8.35 13.633c-1.347 1.2-3.132 1.86-5.029 1.862h-.005c-1.789 0-3.336-.576-4.647-1.353L5.2 21.667l4.316-1.13c1.233.676 2.628 1.033 4.053 1.034 4.545 0 8.244-3.699 8.245-8.245 0-2.202-.857-4.272-2.413-5.828-1.557-1.556-3.628-2.413-5.83-2.413C9.023 5.085 5.325 8.785 5.324 13.331c0 1.636.425 3.203 1.226 4.57l-1.305 4.767a.999.999 0 0 0 1.229 1.23l4.777-1.253c1.425.855 3.061 1.308 4.78 1.308 5.096 0 9.244-4.148 9.245-9.245-.001-2.673-1.096-5.074-2.945-6.773z"/>
-    </svg>
-    <span>צרו קשר!</span>
-</a>
+
 </script>
 </body>
 </html>
