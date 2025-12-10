@@ -346,12 +346,25 @@
             width: 100%;
         }
         
-        .restart-btn {
+        /* Start Screen & Restart Button Styling */
+        .start-btn, .restart-btn {
             background: var(--secondary-color);
             margin-top: 20px;
             color: #333;
-            font-size: 1.2rem;
-            padding: 15px 30px;
+            font-size: 1.3rem;
+            padding: 15px 40px;
+            width: auto; /* Allow button to size to text */
+            display: inline-block;
+        }
+
+        .start-image {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 12px;
+            border: 3px solid #333;
+            margin-bottom: 20px;
+            box-shadow: 4px 4px 0px rgba(0,0,0,0.1);
         }
 
         /* Result Whatsapp Button (Green) */
@@ -373,39 +386,48 @@
 
         /* Floating Whatsapp Button CSS */
         .floating-whatsapp {
-            position: fixed; 
-            bottom: 20px;
-            left: 20px;
-            background-color: #25D366;
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            background-color: #25D366; /* הירוק הרשמי */
             color: white;
-            padding: 12px 20px;
+            padding: 12px 24px; /* קצת יותר גדול ומרווח */
             border-radius: 50px;
             text-decoration: none;
-            font-weight: bold;
+            font-family: 'Rubik', sans-serif; /* שיהיה תואם לפונט של האתר */
+            font-weight: 700;
+            font-size: 1rem;
             display: flex;
             align-items: center;
-            gap: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            gap: 12px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); /* צללית ירוקה זוהרת */
             z-index: 1000;
-            transition: transform 0.3s ease;
-            border: 2px solid white; 
+            transition: all 0.3s ease;
+            border: none; /* הורדנו את המסגרת הלבנה למראה נקי יותר */
         }
 
         .floating-whatsapp:hover {
-            transform: scale(1.1); 
-            background-color: #20BA5A;
+            transform: translateY(-5px) scale(1.02); /* אפקט ריחוף עדין */
+            background-color: #128C7E; /* ירוק כהה יותר במעבר עכבר */
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
         }
 
         .floating-whatsapp svg {
-            fill: white; 
+            width: 28px; /* אייקון קצת יותר גדול */
+            height: 28px;
+            fill: white;
         }
 
         @media (max-width: 768px) {
             .floating-whatsapp {
-                padding: 10px 15px;
+                padding: 10px 20px;
                 font-size: 0.9rem;
-                bottom: 15px;
-                left: 15px;
+                bottom: 20px;
+                left: 20px;
+            }
+            .floating-whatsapp svg {
+                width: 24px;
+                height: 24px;
             }
              .content-wrapper {
                 flex-direction: column;
@@ -460,13 +482,23 @@
 <div class="game-container">
     <header>
         <div class="header-title-wrapper">
-            <img src="yamti26.jpg" alt="לוגו" class="header-logo">
+            <img src="YOUR-IMAGE-NAME.jpg" alt="לוגו" class="header-logo">
             <h1>חידון ים תיכון</h1>
         </div>
         <div class="subtitle">טריוויה נפוליטנית מקורית</div>
     </header>
 
-    <div class="content-wrapper">
+    <div id="start-screen-ui" class="content-wrapper" style="flex-direction: column; align-items: center;">
+        <div class="question-card" style="max-width: 500px;">
+            <img src="yugel.png" alt="פתיחה" class="start-image">
+            
+            <h2 style="margin-bottom: 25px; color: var(--primary-color);">אני ממש מבין בפיצות...<br>חושבים שגם אתם?</h2>
+            
+            <button class="btn start-btn" id="start-game-btn">בואו נתחיל! 🍕</button>
+        </div>
+    </div>
+
+    <div id="main-game-content" class="content-wrapper" style="display: none;">
         
         <div class="scene">
             <div class="oven-container">
@@ -542,8 +574,9 @@
 </div>
 
 <a href="https://wa.me/972544900928?text=היי,%20אשמח%20לפרטים%20על%20הפיצות!" class="floating-whatsapp" target="_blank">
-    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-        <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.599 2.669-.699c.93.513 2.004.788 3.075.789h.005c3.181 0 5.767-2.586 5.766-5.766 0-1.545-.601-2.997-1.694-4.089-1.094-1.092-2.545-1.693-4.091-1.693zm8.35 13.633c-1.347 1.2-3.132 1.86-5.029 1.862h-.005c-1.789 0-3.336-.576-4.647-1.353L5.2 21.667l4.316-1.13c1.233.676 2.628 1.033 4.053 1.034 4.545 0 8.244-3.699 8.245-8.245 0-2.202-.857-4.272-2.413-5.828-1.557-1.556-3.628-2.413-5.83-2.413C9.023 5.085 5.325 8.785 5.324 13.331c0 1.636.425 3.203 1.226 4.57l-1.305 4.767a.999.999 0 0 0 1.229 1.23l4.777-1.253c1.425.855 3.061 1.308 4.78 1.308 5.096 0 9.244-4.148 9.245-9.245-.001-2.673-1.096-5.074-2.945-6.773z"/>
+    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+        <path d="M16 2C8.268 2 2 8.268 2 16c0 2.47.643 4.86 1.865 6.975L2.3 29.7l6.73-1.565A13.94 13.94 0 0 0 16 30c7.732 0 14-6.268 14-14S23.732 2 16 2zm0 25.5c-2.26 0-4.47-.6-6.42-1.74l-4.59 1.07 1.07-4.59A11.45 11.45 0 0 1 4.5 16C4.5 9.65 9.65 4.5 16 4.5S27.5 9.65 27.5 16 22.35 27.5 16 27.5z" fill-opacity="0"/>
+        <path d="M23.9 20.6c-.3-.15-1.77-.88-2.04-1s-.47-.15-.67.15-.77 1-1 1.2-.4.27-.7.12a8.77 8.77 0 0 1-4.3-3.7c-.45-.77 0-1.15.5-1.6l.6-.7a3.5 3.5 0 0 0 .37-.6 1.4 1.4 0 0 0-.07-.65c-.07-.3-1.87-4.5-2.57-6.15-.67-1.6-.7-1.4-1-1.4h-.85c-.3 0-.77.1-1.17.55S9.5 7.6 9.5 9.75s2.27 4.2 2.57 4.6 4.5 6.9 10.9 9.6c4.6 1.95 4.6 1.3 5.4 1.2s2.65-1.1 3-2.15.37-2 .27-2.15-.37-.1-.67-.25z"/>
     </svg>
     <span>צרו קשר!</span>
 </a>
@@ -618,6 +651,12 @@
     const resultUI = document.getElementById('result-ui');
     const finalScore = document.getElementById('final-score');
     const rankMsg = document.getElementById('rank-msg');
+    
+    // New Elements for Start Screen
+    const startScreenUI = document.getElementById('start-screen-ui');
+    const mainGameContent = document.getElementById('main-game-content');
+    const startGameBtn = document.getElementById('start-game-btn');
+
 
     /* SVG for Pizza Token */
     const pizzaSVG = `
@@ -644,6 +683,14 @@
         
         loadQuestion();
     }
+
+    // Start Button Click Handler
+    startGameBtn.addEventListener('click', function() {
+        startScreenUI.style.display = 'none'; // Hide start screen
+        mainGameContent.style.display = 'flex'; // Show game content
+        initGame(); // Start the game logic
+    });
+
 
     function loadQuestion() {
         isAnswering = false;
@@ -794,8 +841,8 @@
         draw();
     }
 
-    // Start
-    initGame();
+    // שינוי: המשחק לא מתחיל אוטומטית, אלא מחכה ללחיצה על הכפתור
+    // initGame(); 
 
 </script>
 </body>
